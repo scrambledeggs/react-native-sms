@@ -90,6 +90,10 @@ public class SendSMSModule extends ReactContextBaseJavaModule implements Activit
                     recipientString += recipients.getString(i);
                     recipientString += separator;
                 }
+                
+                // For Asus, adding an extra separator creates a 'blank' recipient
+                recipientString = recipientString.substring(0, recipientString.length() - 1);
+               
                 sendIntent.putExtra("address", recipientString);
             }
 
